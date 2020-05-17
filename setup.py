@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='apt-prom-exporter',
-    version='0.1.1',
+    version='0.1.2',
     packages=[''],
     url='',
     license='',
@@ -12,5 +12,8 @@ setup(
     install_requires=[
         'prometheus_client',
         'apscheduler',
+    ],
+    scripts=[
+        'bin/apt-prom-exporter'
     ]
 )

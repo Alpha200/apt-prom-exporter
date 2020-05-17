@@ -1,14 +1,19 @@
+from collections import namedtuple
+
 from prometheus_client import start_http_server, Gauge
 
 from apt_check import run
-from typing import NamedTuple
 from apscheduler.schedulers.blocking import BlockingScheduler
 
+# Do not use typed named tuple (python 3.5 is required)
+#from typing import NamedTuple
 
-class Options(NamedTuple):
-    security_updates_unattended: bool
-    show_package_names: bool
-    readable_output: bool
+#class Options(NamedTuple):
+#    security_updates_unattended: bool
+#    show_package_names: bool
+#    readable_output: bool
+
+Options = namedtuple('Options', ['security_updates_unattended', 'show_package_names', 'readable_output'])
 
 
 scheduler = BlockingScheduler()
@@ -24,7 +29,7 @@ def check_apt():
     NUM_SECURITY_UPDATES.set(num_security_updates)
 
 
-if __name__ == '__main__':
+def run_app():
     check_apt()
 
     # Start up the server to expose the metrics.
