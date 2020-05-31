@@ -5,14 +5,6 @@ from prometheus_client import start_http_server, Gauge
 from apt_check import run
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-# Do not use typed named tuple (python 3.5 is required)
-#from typing import NamedTuple
-
-#class Options(NamedTuple):
-#    security_updates_unattended: bool
-#    show_package_names: bool
-#    readable_output: bool
-
 Options = namedtuple('Options', ['security_updates_unattended', 'show_package_names', 'readable_output'])
 
 
